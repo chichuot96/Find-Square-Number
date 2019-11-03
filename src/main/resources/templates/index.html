@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" th:action="@{/}" onsubmit="return validate()">
+    <label for="listNum">Enter 10 number</label>
+    <input type="text" name="number" id="listNum" th:value="${listNum}"/>
+    <input type="submit" value="Find Square">
+</form>
+<div>
+    <div th:each="list : ${mapNum}">
+        <p>
+        <span th:each="num : ${list}">
+            [<span th:utext="${num.getIndex()}"> </span>][<span  th:utext="${num.getValue()}"></span>] <span>---</span>
+        </span>
+        </p>
+
+    </div>
+
+</div>
+</body>
+<script>
+    function validate(){
+        var listNum=$("#listNum").val();
+        var regex=/(-?\d+,)*(-?\d+)/;
+        if(!regex.test(listNum)){
+            alert("please enter number split by ','");
+            return false;
+        }else {
+            return true;
+        }
+    }
+</script>
+</html>
