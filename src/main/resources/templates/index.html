@@ -7,10 +7,13 @@
 </head>
 <body>
 <form method="POST" th:action="@{/}" onsubmit="return validate()">
-    <label for="listNum">Enter 10 number</label>
+    <label for="listNum">Enter number</label>
     <input type="text" name="number" id="listNum" th:value="${listNum}"/>
     <input type="submit" value="Find Square">
 </form>
+<div >
+    <span th:utext="${message}"></span>
+</div>
 <div>
     <div th:each="list : ${mapNum}">
         <p>
@@ -24,6 +27,9 @@
 </div>
 </body>
 <script>
+    var message=[[${message}]];
+    alert(message);
+
     function validate(){
         var listNum=$("#listNum").val();
         var regex=/(-?\d+,)*(-?\d+)/;

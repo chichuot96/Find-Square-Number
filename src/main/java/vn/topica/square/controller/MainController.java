@@ -31,7 +31,15 @@ public class MainController {
         Map<Integer,Integer> mapSquare=mapNumber.entrySet().stream()
                 .filter(entry->s.findOddSquare(entry.getValue()))
                 .collect(Collectors.toMap(entry->entry.getKey(),entry->(int)sqrt(entry.getValue())));
+//        mapSquare.entrySet().forEach(entry->{
+//            System.out.println(entry.getKey()+"==="+entry.getValue());
+//        });
         ArrayList<ArrayList<Obj>> listReturn=s.getSubArr(mapSquare);
+        if(listReturn.size()==0){
+            model.addAttribute("message","khong co day so thoa man");
+            System.out.println("khong co");
+
+        }
         model.addAttribute("mapNum",listReturn);
         model.addAttribute("listNum",listNum);
         return "index";
